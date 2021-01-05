@@ -20,8 +20,11 @@ Route::get('/', function () {
 
 
 Route::group(['middleware' => ['auth:sanctum','verified']], function(){
-    Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-        // return view('dashboard');
-        return view('admin.pages');
+    Route::get('/dashboard', function () {
+        return view('dashboard');
     })->name('dashboard');
+
+    Route::get('/pages', function () {
+        return view('admin.pages');
+    })->name('pages');
 });
